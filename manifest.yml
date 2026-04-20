@@ -1,20 +1,25 @@
 id: helloworld
 distro: ubuntu
 version: "1.0"
-description: Mensagem simples e sai automaticamente
+description: Mensagem simples ao iniciar o container
 
 execute:
   - "apt update -qq && apt upgrade -y -qq"
   - "apt clean -qq"
 
   - |
-    cat > /root/.bashrc << 'EOL'
+    cat > /usr/local/bin/start.sh << 'EOL'
+#!/bin/bash
 clear
 echo ""
-echo "🧸 ) Hello from UContainerD!"
+echo "🧸 Hello from UContainerD!"
 echo ""
 echo "   Made in Brazil ❤️"
 echo ""
 sleep 2
-exit 0
+exec bash
 EOL
+
+  - "chmod +x /usr/local/bin/start.sh"
+
+entrypoint: "/usr/local/bin/start.sh"
