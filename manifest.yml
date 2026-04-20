@@ -3,6 +3,8 @@ distro: ubuntu
 version: "1.0"
 description: Mensagem simples ao iniciar o container
 
+entrypoint: "/usr/local/bin/start.sh"
+
 execute:
   - "apt update -qq && apt upgrade -y -qq"
   - "apt clean -qq"
@@ -21,5 +23,3 @@ exec bash
 EOL
 
   - "chmod +x /usr/local/bin/start.sh"
-
-entrypoint: "/usr/local/bin/start.sh"
