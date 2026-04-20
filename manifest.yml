@@ -1,0 +1,20 @@
+id: helloworld
+distro: ubuntu
+version: "1.0"
+description: Mensagem simples e sai automaticamente
+
+execute:
+  - "apt update -qq && apt upgrade -y -qq"
+  - "apt clean -qq"
+
+  - |
+    cat > /root/.bashrc << 'EOL'
+clear
+echo ""
+echo "🧸 ) Hello from UContainerD!"
+echo ""
+echo "   Made in Brazil ❤️"
+echo ""
+sleep 2
+exit 0
+EOL
